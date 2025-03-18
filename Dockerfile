@@ -10,7 +10,7 @@ WORKDIR $TARGET_FOLDER/
 RUN apk add --virtual build-deps file make curl gcc musl-dev libffi-dev g++
 
 RUN adduser -D dvga
-RUN chown dvga. $TARGET_FOLDER/
+RUN chown dvga $TARGET_FOLDER/
 USER dvga
 
 RUN python -m venv venv
