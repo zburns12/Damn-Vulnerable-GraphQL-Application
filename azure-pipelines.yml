@@ -1,29 +1,46 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
+# azure-pipelines.yml
 trigger:
-- push
+  - main  # Or adjust based on your branch naming
 
-resources:
-- repo: self
+pool:
+  vmImage: 'ubuntu-latest'
 
 variables:
-  tag: '$(Build.BuildId)'
+  # Update these values according to your Azure Container Registry
+  containerRegistry: 'ACR'
+  imageName: 'dvga'
+  imageTag: '$(Build.BuildId)'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
 
 stages:
 - stage: Build
-  displayName: Build image
+  displayName: 'Build and Push Docker Image'
   jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      {{ pool }}
+  - job: BuildAndPush
+    displayName: 'Build and Push'
     steps:
+    - checkout: self
+      displayName: 'Checkout Repository'
+      
     - task: Docker@2
-      displayName: Build an image
+      displayName: 'Login to ACR'
       inputs:
-        command: build
-        dockerfile: '{{ dockerfilePath }}'
+        command: login
+        containerRegistry: 'ACR'  # Replace with your Azure Container Registry service connection
+        
+    - task: Docker@2
+      displayName: 'Build and Push Image'
+      inputs:
+        command: buildAndPush
+        repository: $(imageName)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: 'ACR'  # Replace with your Azure Container Registry service connection
         tags: |
-          $(tag)
+          $(imageTag)
+          latest
+          
+    - task: Docker@2
+      displayName: 'Logout from ACR'
+      inputs:
+        command: logout
+        containerRegistry: 'ACR'  # Replace with your Azure Container Registry service connection
