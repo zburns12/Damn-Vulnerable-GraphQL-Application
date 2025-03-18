@@ -1,6 +1,6 @@
 # azure-pipelines.yml
 trigger:
-  - master  
+  - main  
 
 pool: default
 
