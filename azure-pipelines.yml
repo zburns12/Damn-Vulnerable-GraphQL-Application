@@ -37,9 +37,18 @@ stages:
         tags: |
           $(imageTag)
           latest
-          
     - task: Docker@2
       displayName: 'Logout from ACR'
       inputs:
         command: logout
         containerRegistry: 'ACR'  # Replace with your Azure Container Registry service connection
+- stage: Scan 
+  displayName: 'Build and Push Docker Image'
+  jobs:
+  - job: BuildAndPush
+    displayName: 'Build and Push'
+    steps:
+    - task: Backslash-Security-Scan@0
+      inputs:
+        authToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjM1MWE5MWFlIn0.eyJzdWIiOiJiZjBiMDBiZC0wNGE3LTRjMWQtYTI4MS1hMzBjZTU0NGViZjAiLCJ0eXBlIjoidGVuYW50QWNjZXNzVG9rZW4iLCJ0ZW5hbnRJZCI6IjdjNDk0N2FjLWVjZTItNGVjNS1iMjc3LWJkNzdhZWFjOTU0MSIsImFwcGxpY2F0aW9uSWQiOiJjYjE1MTI4Ny01ZDEzLTRhOTQtODNhNi05MGM3Y2FkOWVkYmIiLCJyb2xlcyI6WyJGRVRDSC1ST0xFUy1CWS1BUEkiXSwicGVybWlzc2lvbnMiOlsiRkVUQ0gtUEVSTUlTU0lPTlMtQlktQVBJIl0sImF1ZCI6IjM1MWE5MWFlLWNiZGQtNDYxMC04NTgxLTBlZGZlZTVhNWY1MiIsImlzcyI6Imh0dHBzOi8vYXV0aC5iYWNrc2xhc2guc2VjdXJpdHkiLCJpYXQiOjE3NDEzNjQ1Nzh9.R2YKRkAJP3dcSzrT6IOjdmeouYQ2cCdywbApd0Ef2g5p2NQBwCToB6X-6dLMqszyk4TeIEuXLWzLcRG-bIvbmwawiEqCMdeYRSJ3YnEwE4Af1RRupR0WY2qHuWdqcN5ViAu75Cg4i4Or1fkworQg0jbc52Qw9CFfJF-ITsMwz1PPJEqAj-V_xXE4RgZNrjvcEWdbdNyq0CSvuPqFVOKV_M-icRrUYcUA_NanrSo-ZPfv_-MsoAB5aZz1Awn31HczcTiGnuIWMakUB-KjsK6T45Exbfdw7JXZvco33LJgh_NpUja0jl5ueFvk6BT-AVZvibIpSJITbeiLtG3RILVkmw'
+        pushToDashboard: true
