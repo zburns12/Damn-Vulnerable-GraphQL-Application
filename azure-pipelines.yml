@@ -2,8 +2,7 @@
 trigger:
   - main  # Or adjust based on your branch naming
 
-pool:
-  vmImage: 'ubuntu-latest'
+pool: default
 
 variables:
   # Update these values according to your Azure Container Registry
