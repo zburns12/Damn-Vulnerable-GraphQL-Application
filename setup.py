@@ -22,7 +22,7 @@ def clean_up():
     os.mkdir(config.WEB_UPLOADDIR)
 
   print('Reconstructing Database')
-  if os.path.exists(config.SQLALCHEMY_FILE):
+  if os.path.exists(config.SQLALCHEMY_FILE):  if os.path.exists(config.SQLALCHEMY_FILE):  if os.path.exists(config.SQLALCHEMY_FILE):  if os.path.exists(config.SQLALCHEMY_FILE):
     try:
       os.remove(config.SQLALCHEMY_FILE)
     except OSError:
