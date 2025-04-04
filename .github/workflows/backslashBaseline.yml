@@ -1,0 +1,21 @@
+name: 'CI | Backslash baseline scan'
+
+on:
+  push:
+    branches:
+    - main
+
+env:
+  API_KEY: ${{ secrets.BACKSLASH_API_KEY }}
+
+jobs:
+  backslash_scan_job:
+    runs-on: ubuntu-latest
+    name: Backslash scan
+    steps:
+      - name: Backslash scan step
+        id: bscan
+        uses: backslash-security/scan-action@main
+        with:
+          authToken: ${{ env.API_KEY }}
+          pushToDashboard: true
