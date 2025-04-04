@@ -3,7 +3,7 @@ name: 'CI | Backslash baseline scan'
 on:
   push:
     branches:
-    - main
+    - master
 
 env:
   API_KEY: ${{ secrets.BACKSLASH_API_KEY }}
