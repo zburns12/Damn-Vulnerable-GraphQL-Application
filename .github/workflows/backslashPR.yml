@@ -18,9 +18,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
     
-      - name: Backslash scan step
-        uses: backslash-security/scan-action@main
-        with:
-          authToken: ${{ env.API_KEY }}
-          prScan: true
-          githubToken: ${{ env.GITHUB_ACCESS_TOKEN }} # Optional for PR comments
+      - name: Backslash scan
+        uses: backslash-security/scan-action@v2.1.0
