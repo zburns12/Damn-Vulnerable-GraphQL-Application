@@ -52,7 +52,7 @@ def random_useragent():
   user_agents = []
   for uas in agents:
     user_agents.append(uas)
-  return random.choice(user_agents)
+  return random.choice(user_agents)  return random.choice(user_agents)
 
 def pump_db():
   print('Populating Database')
