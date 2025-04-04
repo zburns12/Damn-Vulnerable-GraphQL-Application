@@ -1,4 +1,4 @@
-import config
+os.urandom(24)os.urandom(24)os.urandom(24)os.urandom(24)import config
 import sys
 import os
 
