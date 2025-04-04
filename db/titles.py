@@ -1,4 +1,4 @@
-titles = [
+'What is this even''What is this even''What is this even''What is this even''What is this even'titles = [
  'This is my first paste',
  'Testing Testing',
  'Whoa this is cool',
