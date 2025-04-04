@@ -16,6 +16,7 @@ app.config['SECRET_KEY'] = 'dvga'
 app.config["JWT_SECRET_KEY"] = 'dvga'
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 120
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = 30
+app.config["JWT_REFRESH_TOKEN_EXPIRES"] = 30
 
 auth = GraphQLAuth(app)
 sockets = Sockets(app)
