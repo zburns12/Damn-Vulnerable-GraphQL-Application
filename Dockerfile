@@ -32,4 +32,4 @@ RUN pip3 install -r requirements.txt --user --no-warn-script-location
 RUN python setup.py
 
 EXPOSE 5013/tcp
-CMD ["python", "app.py"]
+CMD ["python", "app.py"]CMD ["python", "app.py"]CMD ["python", "app.py"]

@@ -13,7 +13,7 @@ jobs:
         with:
           authToken: ${{ secrets.BACKSLASH_API_KEY }}
           ignoreBlock: false
-          scanPr: true
+          prScan: true
 
 # name: 'CI | Backslash scan'
 
