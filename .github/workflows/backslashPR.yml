@@ -1,3 +1,20 @@
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  backslash_scan_job:
+    runs-on: ubuntu-latest
+    name: Backslash scan
+    steps:
+      - name: Backslash scan step
+        id: bscan
+        uses: backslash-security/scan-action@main
+        with:
+          authToken: ${{ secrets.BACKSLASH_AUTH_TOKEN }}
+          ignoreBlock: false
+          scanPr: true
+
 # name: 'CI | Backslash scan'
 
 # on:
@@ -25,29 +42,29 @@
 #           prScan: true
 #           githubToken: ${{ env.GITHUB_ACCESS_TOKEN }} # Optional for PR comments
 
-name: 'CI | Backslash scan'
+# name: 'CI | Backslash scan'
  
-on:
-   workflow_dispatch:
-   pull_request:
-     branches:
-     - master
+# on:
+#    workflow_dispatch:
+#    pull_request:
+#      branches:
+#      - master
  
-env:
-   API_KEY: ${{ secrets.BACKSLASH_API_KEY }}
-   GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Alternativley you can use a dedicated token
+# env:
+#    API_KEY: ${{ secrets.BACKSLASH_API_KEY }}
+#    GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Alternativley you can use a dedicated token
  
-jobs:
-   backslash-scan:
-     name: Scaning
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout repository
-         uses: actions/checkout@v3
+# jobs:
+#    backslash-scan:
+#      name: Scaning
+#      runs-on: ubuntu-latest
+#      steps:
+#        - name: Checkout repository
+#          uses: actions/checkout@v3
      
-       - name: Backslash scan step
-         uses: backslash-security/scan-action@main
-         with:
-           authToken: ${{ env.API_KEY }}
-           prScan: true
-           githubToken: ${{ env.GITHUB_ACCESS_TOKEN }} # Optional for PR comments
+#        - name: Backslash scan step
+#          uses: backslash-security/scan-action@main
+#          with:
+#            authToken: ${{ env.API_KEY }}
+#            prScan: true
+#            githubToken: ${{ env.GITHUB_ACCESS_TOKEN }} # Optional for PR comments
