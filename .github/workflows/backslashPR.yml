@@ -11,7 +11,7 @@ jobs:
         id: bscan
         uses: backslash-security/scan-action@main
         with:
-          authToken: ${{ secrets.BACKSLASH_AUTH_TOKEN }}
+          authToken: ${{ secrets.BACKSLASH_API_KEY }}
           ignoreBlock: false
           scanPr: true
 
